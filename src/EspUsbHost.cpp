@@ -577,7 +577,7 @@ void EspUsbHost::_onReceive(usb_transfer_t *transfer) {
         hid_mouse_report_t report = {};
         report.buttons = transfer->data_buffer[1];
         report.x = (uint8_t)transfer->data_buffer[2];
-        report.y = (uint8_t)transfer->data_buffer[4];
+        report.y = (uint8_t)transfer->data_buffer[3];
         report.wheel = (uint8_t)transfer->data_buffer[6];
         usbHost->onMouse(report, last_buttons);
         if (report.buttons != last_buttons) {
