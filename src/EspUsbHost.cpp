@@ -566,7 +566,7 @@ void EspUsbHost::_onReceive(usb_transfer_t *transfer) {
           for (int i = 0; i < 6; i++) {
             if (report.keycode[i] != 0 && last_report.keycode[i] == 0) {
               // Type
-              usbHost->onKeyboardKey(usbHost->getKeycodeToAscii(report.keycode[i], shift), report.keycode[i], shift);
+              usbHost->onKeyboardKey(usbHost->getKeycodeToAscii(report.keycode[i], shift), report.keycode[i], report.modifier);
             }
           }
 
