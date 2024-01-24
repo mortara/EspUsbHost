@@ -9,33 +9,33 @@
 class EspUsbHost {
 public:
   bool isReady = false;
-  uint8_t interval;
-  unsigned long lastCheck;
+  uint8_t interval = 0;
+  unsigned long lastCheck = 0;
 
   struct endpoint_data_t {
-    uint8_t bInterfaceNumber;
-    uint8_t bInterfaceClass;
-    uint8_t bInterfaceSubClass;
-    uint8_t bInterfaceProtocol;
-    uint8_t bCountryCode;    
+    uint8_t bInterfaceNumber = 0;
+    uint8_t bInterfaceClass = 0;
+    uint8_t bInterfaceSubClass = 0;
+    uint8_t bInterfaceProtocol = 0;
+    uint8_t bCountryCode = 0;    
   };
-  endpoint_data_t endpoint_data_list[17];
-  uint8_t _bInterfaceNumber;
-  uint8_t _bInterfaceClass;
-  uint8_t _bInterfaceSubClass;
-  uint8_t _bInterfaceProtocol;
-  uint8_t _bCountryCode;
-  esp_err_t claim_err;
+  endpoint_data_t endpoint_data_list[17] = {};
+  uint8_t _bInterfaceNumber = 0;
+  uint8_t _bInterfaceClass = 0;
+  uint8_t _bInterfaceSubClass = 0;
+  uint8_t _bInterfaceProtocol = 0;
+  uint8_t _bCountryCode = 0;
+  esp_err_t claim_err = 0;
 
-  usb_host_client_handle_t clientHandle;
-  usb_device_handle_t deviceHandle;
-  uint32_t eventFlags;
-  usb_transfer_t *usbTransfer[16];
-  uint8_t usbTransferSize;
-  uint8_t usbInterface[16];
-  uint8_t usbInterfaceSize;
+  usb_host_client_handle_t clientHandle = nullptr;
+  usb_device_handle_t deviceHandle = nullptr;
+  uint32_t eventFlags = 0;
+  usb_transfer_t *usbTransfer[16] = {};
+  uint8_t usbTransferSize = 0;
+  uint8_t usbInterface[16] = {};
+  uint8_t usbInterfaceSize = 0;
 
-  hid_local_enum_t hidLocal;
+  hid_local_enum_t hidLocal = HID_LOCAL_NotSupported;
 
   void begin(void);
   void task(void);
