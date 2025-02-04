@@ -575,9 +575,9 @@ void EspUsbHost::_onReceive(usb_transfer_t *transfer) {
       } else if (endpoint_data->bInterfaceProtocol == HID_ITF_PROTOCOL_MOUSE) {
         static uint8_t last_buttons = 0;
         hid_mouse_report_t report = {};
-        report.buttons = transfer->data_buffer[1];
-        report.x = (uint8_t)transfer->data_buffer[2];
-        report.y = (uint8_t)transfer->data_buffer[3];
+        report.buttons = transfer->data_buffer[0];
+        report.x = (uint8_t)transfer->data_buffer[1];
+        report.y = (uint8_t)transfer->data_buffer[2];
         report.wheel = (uint8_t)transfer->data_buffer[6];
         usbHost->onMouse(report, last_buttons);
         if (report.buttons != last_buttons) {
